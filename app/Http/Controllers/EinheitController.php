@@ -32,7 +32,7 @@ class EinheitController extends Controller
         $data = Einheit::all();
         // // $listData=$this->data_tree($einhit,0,0);
         // return view('list_data', compact('einhit'));
-        $einhits= DB::table('einheits')->where('parent_foder', 0)->get();
+        $einhits= DB::table('einheit')->where('parent_id', null)->get();
         return view('list_data', compact('einhits', 'data'));
     }
 
@@ -49,7 +49,7 @@ class EinheitController extends Controller
         $einhit = new Einheit();
         $einhit->name = $request->name;
         $einhit->rolle = $request->rolle;
-        $einhit->parent_foder = $request->parent_foder;
+        $einhit->parent_id = $request->parent_foder;
         $einhit->status = $request->status;
         $einhit->save();
         return redirect()->route('list');
@@ -68,7 +68,7 @@ class EinheitController extends Controller
         $einhit= Einheit::findOrFail($id);
         $einhit->name = $request->name;
         $einhit->rolle = $request->rolle;
-        $einhit->parent_foder = $request->parent_foder;
+        $einhit->parent_id = $request->parent_foder;
         $einhit->status = $request->status;
         $einhit->save();
         return redirect()->route('list');

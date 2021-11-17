@@ -9,11 +9,12 @@ class Einheit extends Model
 {
     use HasFactory;
     public $timestamp= false;
- 
+    protected $table= 'einheit';
 
-    public $fillable= ['name', 'parent_foder'];
+    public $fillable= ['name', 'parent_id', 'rolle', 'status'];
+    protected $primaryKey = 'id';
 
     public function childs(){
-        return $this->hasMany(Einheit::class,'parent_foder');
+        return $this->hasMany(Einheit::class,'parent_id');
     }
 }

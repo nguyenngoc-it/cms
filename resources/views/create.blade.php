@@ -22,7 +22,7 @@
             <div class="form-group col-md-6">
                 <label for="inputState">Thuộc đơn vị</label>
                 <select name="parent_foder" id="inputState" class="form-control">
-                    <option value="0" selected>Choose...</option>
+                    <option  selected>Choose...</option>
                     <?php foreach ($einhit as $key => $value) { ?>
                     <option value="<?= $value['id'] ?>"><?= $value['name'] ?></option>
                     <?php  } ?>

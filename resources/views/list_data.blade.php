@@ -10,15 +10,11 @@
             </tr>
         </thead>
         <tbody>
-         @foreach ($einhits as $item)
+         @foreach ($data as $item)
              <tr>
                <td>{{$item->name}}</td>
              </tr>
-             @if ($item->childs)
-                 @foreach ($item->childs as $child)
-                     {{$child->name}}
-                 @endforeach
-             @endif
+             
          @endforeach
 
         </tbody>

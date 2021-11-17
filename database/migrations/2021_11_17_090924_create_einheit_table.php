@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBasesTable extends Migration
+class CreateEinheitTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateBasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('bases', function (Blueprint $table) {
+        Schema::create('einheit', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('einheit_id')->unsigned();
             $table->string('name');
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->integer('rolle');
             $table->integer('status');
+            $table->foreign('parent_id')->references('id')->on('einheit');
+
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateBasesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bases');
+        Schema::dropIfExists('einheit');
     }
 }
